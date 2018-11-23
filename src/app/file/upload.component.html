@@ -1,0 +1,16 @@
+
+<div class="container">
+    <div class="jumbotron">
+      <h3>Upload Data Files Into COPIS</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+        <button type="button" class="btn btn-success btn-s" 
+            (click)="uploader.uploadAll()" 
+            [disabled]="!uploader.getNotUploadedItems().length" >
+                Upload
+        </button>
+      </div>
+    </div>
+</div>

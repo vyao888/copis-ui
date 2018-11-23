@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="jumbotron">
+        <h2>{{typeDescription}} Reference</h2>   
+    </div>
+    
+    <table class="table table-hover">
+    <thead>
+    <tr>
+        <td>Code</td>
+        <td>Description</td>
+        <td colspan="2">Actions</td>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let r of references">
+            <td>{{ r.code }}</td>
+            <td>{{ r.description }}</td>
+            <td><a [routerLink]="['/reference-data/reference-data-edit', r.code]" class="btn btn-secondary">Edit</a></td>
+            <td><a (click) = "delete(r.code)" class="btn btn-danger">Delete</a>
+        </tr>
+        <tr>      
+            <td colspan="2"><a [routerLink]="['/reference-data/reference-data-add']" class="btn btn-primary">Create</a></td> 
+            <td colspan="2"><button (click)="cancel()" class="btn btn-warning">Cancel</button></td>   
+        </tr>
+    </tbody>
+    </table>
+
+</div>

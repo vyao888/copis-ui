@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-body">
+      <h3 class="card-title">{{typeDescription}}</h3>
+      <form [formGroup]="refForm" novalidate>
+        <div class="form-group">
+            <label>Code</label>
+            <input type="text" formControlName="code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.code.errors }" />
+            <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
+                <div *ngIf="f.code.errors.required">Code is required</div>
+            </div>
+          </div>
+        
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+          <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+              <div *ngIf="f.description.errors.required">Description is required</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+            <div class="row"> 
+                <div class="col col-50"> 
+                  <button (click)="create(f.code.value, f.description.value)" [disabled]="refForm.invalid" 
+          class="btn btn-primary">Add</button>
+                </div>
+                <div class="col col-50"><button (click)="cancel()" class="button btn-warning">Cancel</button></div>     
+            </div>
+        </div>
+      </form>
+    </div>
+</div>

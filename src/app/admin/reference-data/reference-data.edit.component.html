@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-body">
+      <h3 class="card-title">{{typeDescription}}</h3>
+    <form [formGroup]="refForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Code</label>
+        <input type="text" class="form-control" formControlName="code" [value]="reference?.code" readonly/>
+      </div>
+      
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" formControlName="description" class="form-control" [(ngModel)] = "reference.description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">Description is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <div class="row"> 
+              <div class="col col-50"><button (click)="update(f.description.value)" [disabled]="f.description.errors && f.code.undefined" 
+                class="btn btn-primary">Update</button></div>
+               <div class="col col-50"><button (click)="cancel()" class="button btn-warning">Cancel</button></div>     
+          </div>
+      </div>
+    </form>
+  </div>
+</div>
